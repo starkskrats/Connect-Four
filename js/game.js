@@ -112,7 +112,7 @@ function reset() {
 
 function drawCircle(row, col) {
     context.beginPath();
-    context.arc((col * 100) + 50, (row * 100) - 50, 50, 2 * Math.PI, false);
+    context.arc((col * 100) + 50, (row * 100) - 50, 48, 2 * Math.PI, false);
 
     if (player == 1) {
         context.fillStyle = "yellow";
