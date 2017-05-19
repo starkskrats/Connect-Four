@@ -84,6 +84,10 @@ function play() {
             player = 1;
         }
 
+        setTimeout(function () {
+            checkForWinner();
+        }, 0);
+
     }, false);
 }
 
@@ -117,10 +121,6 @@ function drawCircle(row, col) {
     }
 
     context.fill();
-
-    setTimeout(function () {
-        checkForWinner();
-    }, 0);
 }
 
 function checkForWinner() {
@@ -162,9 +162,9 @@ function checkForWinner() {
 
     if (hasWon) {
         if (player == 1) {
-            alert('Player 2 has won the game!');
+            alert('Player 2 wins!');
         } else {
-            alert('Player 1 has won the game!')
+            alert('Player 1 wins!')
         }
 
         canvas.removeEventListener('click', click, false);
