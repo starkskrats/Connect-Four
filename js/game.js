@@ -1,9 +1,11 @@
+var canvas = document.getElementById("canvas");
+var context;
+var click;
+
 // Box width
 var bw = 700;
 // Box height
 var bh = 600;
-
-var hasWon = false;
 
 // gameBoard array. this makes it easy to check if their is a winner
 var gameBoard = [
@@ -15,10 +17,10 @@ var gameBoard = [
     [0, 0, 0, 0, 0, 0, 0]
 ];
 
-var canvas = document.getElementById("canvas");
-var context;
-
 var player = 1;
+var hasWon = false;
+
+window.onload = init;
 
 function init() {
     context = canvas.getContext("2d");
@@ -31,7 +33,6 @@ function drawBoard() {
         context.lineTo(0.5 + x, bh);
     }
 
-
     for (var x = 0; x <= bh; x += 100) {
         context.moveTo(0, 0.5 + x);
         context.lineTo(bw, 0.5 + x);
@@ -40,10 +41,6 @@ function drawBoard() {
     context.strokeStyle = "black";
     context.stroke();
 }
-
-window.onload = init;
-
-var click;
 
 function play() {
     document.getElementById("play").textContent = "RESET";
@@ -91,7 +88,6 @@ function play() {
 }
 
 function reset() {
-
     for (i = 0; i < 6; i++) {
         for (j = 0; j < 7; j++) {
             gameBoard[i][j] = 0;
@@ -106,8 +102,8 @@ function reset() {
     document.getElementById("play").textContent = "PLAY";
     document.getElementById("play").setAttribute('onclick', 'play()');
 
-    hasWon = false;
     player = 1;
+    hasWon = false;
 }
 
 function drawCircle(row, col) {
@@ -128,7 +124,6 @@ function drawCircle(row, col) {
 }
 
 function checkForWinner() {
-
     // checks every row, but only first three columns, since there are only 7 columns. loops through and checks if the next three locations are equal to the current location
     for (i = 0; i < 6; i++) {
         for (j = 0; j < 4; j++) {
